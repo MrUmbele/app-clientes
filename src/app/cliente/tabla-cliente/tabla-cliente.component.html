@@ -1,0 +1,43 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="col">
+  <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-hover">
+      <thead>
+        <button [routerLink]="['/vercliente',0]">Añadir Cliente</button>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Telefono</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of this.clientes; let i = index">
+          <td>{{ this.cliente.nombre }}</td>
+          <td>{{ this.cliente.apellido }}</td>
+          <td>{{ this.cliente.email }}</td>
+          <td>{{ this.cliente.telefono }}</td>
+          <td class="text-center">
+            <a
+              class="btn btn-info btn-xs"
+              [routerLink]="['/vercliente',this.cliente.telefono]"
+            >
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit
+            </a>
+            <a
+              [routerLink]="['/clientes']"
+              class="btn btn-danger btn-xs"
+              (click)="deleteClient(this.cliente.telefono)"
+            >
+              <span class="glyphicon glyphicon-remove"></span>
+              Del
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
